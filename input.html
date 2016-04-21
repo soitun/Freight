@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="javascript">
+
+       function getFreight() {
+           
+        var inputParam = document.getElementById("query").value;
+			
+        var res = contracts["Freight"].contract.freight(inputParam);
+        document.getElementById("queryres").innerText = res;
+    }
+
+    function setFreight() {
+        var contNum = document.getElementById('contNum').value; 
+        var s_Invoice = document.getElementById('s_Invoice').value; 
+        var c_Invoice = document.getElementById('c_Invoice').value; 
+        var s_number = document.getElementById('s_number').value; 
+        var t_Weight = document.getElementById('t_Weight').value;
+        var t_Quantity = document.getElementById('t_Quantity').value;		
+		
+        var res = contracts["Freight"].contract.setFreight(contNum, s_Invoice, c_Invoice, s_number, t_Weight, t_Quality);
+    }
+
+    </script>
+    <style>
+        body {
+            background-color: #d0e4fe;
+        }
+        
+        fieldset {
+            width: 400px
+        }
+        
+        h3 {
+            color: black;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        p {
+            font-family: "Times New Roman";
+            font-size: 12px;
+            clear: both;
+            padding: 5px;
+        }
+        
+        label {
+            text-align: right;
+            width: 100px;
+            float: left;
+        }
+        
+        input {
+            width: 250px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Freight Blocs</h3>
+
+    <fieldset name ="submit" method="insert">
+
+        <p>
+            <label for="contNum">Container Number:</label>
+            <input id="contNum" type="text" maxlength="10">
+
+            <p>
+                <label for="s_Invoice">Shipper Invoice:</label>
+                <input id="s_Invoice" type="text" maxlength="10">
+
+
+                <p>
+                    <label for="c_Invoice">Cosigneer Invoice:</label>
+                    <input id="c_Invoice" type="text" maxlength="10">
+
+
+                    <p>
+                        <label for="s_number">Seal Number:</label>
+                        <input id="s_number" type="text" maxlength="10">
+
+
+                        <p>
+                            <label for="t_Weight">Total Weight:</label>
+                            <input id="t_Weight" type="text" maxlength="7">
+
+
+                            <p>
+                                <label for="t_Quantity">Total Quantity:</label>
+                                <input id="t_Quantity" type="text">
+
+
+                                </form>
+    </fieldset>
+
+    <button onclick="setFreight()">Submit</button>
+    <div>
+		
+      <fieldset class="search">
+      <input type="text" id="query"/>
+      <button onclick="getFreight()">Query</button>
+	  <div id="queryres"> </div> 
+    
+    </fieldset>
+            
+            
+       
+</body>
+
+</html>
